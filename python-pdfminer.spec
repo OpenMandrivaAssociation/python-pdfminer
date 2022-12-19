@@ -1,27 +1,20 @@
-%global	module	pdfminer
-%global mod %(m=%{module}; echo ${m:0:1})
-
-%global oname %{module}
-
 %global cmapdir %(echo `rpm -qls ghostscript-common | grep CMap | awk '{print $2}'`)
 
 Summary:	PDF parser and analyzer
-Name:		python-%{module}
-Version:	20220524
+Name:		python-pdfminer
+Version:	20221105
 Release:	1
 Group:		Development/Python
 License:	MIT and Public Domain and APAFML and BSD and (ASL 2.0 and MIT)
 URL:		https://github.com/pdfminer/pdfminer.six
-#Source0:	https://github.com/pdfminer/pdfminer.six/archive/%{version}/%{oname}-%{version}.tar.gz
-Source0:	https://pypi.io/packages/source/%{mod}/%{module}.six/%{module}.six-%{version}.tar.gz
+#Source0:	https://github.com/pdfminer/pdfminer.six/archive/%{version}/pdfminer-%{version}.tar.gz
+Source0:	https://pypi.io/packages/source/p/pdfminer.six/pdfminer.six-%{version}.tar.gz
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	python3dist(pip)
 BuildRequires:	python3dist(setuptools)
 BuildRequires:	python3dist(wheel)
 
 BuildArch:	noarch
-
-%{?python_provide:%python_provide python3-%{oname}}
 
 %description
 PDFMiner is a tool for extracting information from PDF documents. Unlike other
@@ -35,13 +28,13 @@ analysis.
 %files
 %{_bindir}/dumppdf.py
 %{_bindir}/pdf2txt.py
-%{python3_sitelib}/%{module}
-%{py_puresitedir}/%{module}.six-%{version}-py%{py_ver}.egg-info
+%{python3_sitelib}/pdfminer
+%{py_puresitedir}/pdfminer.six*-info
 
 #--------------------------------------------------------------------
 
 %prep
-%autosetup -n %{module}.six-%{version}
+%autosetup -n pdfminer.six-%{version}
 
 # TODO_ unbundle cmap data
 #rm -vf cmaprsrc/* pdfminer/cmap/*
