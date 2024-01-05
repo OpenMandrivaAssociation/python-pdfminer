@@ -10,9 +10,10 @@ URL:		https://github.com/pdfminer/pdfminer.six
 #Source0:	https://github.com/pdfminer/pdfminer.six/archive/%{version}/pdfminer-%{version}.tar.gz
 Source0:	https://pypi.io/packages/source/p/pdfminer.six/pdfminer.six-%{version}.tar.gz
 BuildRequires:	pkgconfig(python3)
-BuildRequires:	python3dist(pip)
-BuildRequires:	python3dist(setuptools)
-BuildRequires:	python3dist(wheel)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(setuptools-git-versioning)
+BuildRequires:	python%{pyver}dist(wheel)
 
 BuildArch:	noarch
 
@@ -28,8 +29,8 @@ analysis.
 %files
 %{_bindir}/dumppdf.py
 %{_bindir}/pdf2txt.py
-%{python3_sitelib}/pdfminer
-%{py_puresitedir}/pdfminer.six*-info
+%{py_puresitedir}/pdfminer
+%{py_puresitedir}/pdfminer.six-*.*-info/
 
 #--------------------------------------------------------------------
 
