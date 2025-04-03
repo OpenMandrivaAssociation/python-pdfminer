@@ -2,19 +2,18 @@
 
 Summary:	PDF parser and analyzer
 Name:		python-pdfminer
-Version:	20240706
+Version:	20250327
 Release:	1
 Group:		Development/Python
 License:	MIT and Public Domain and APAFML and BSD and (ASL 2.0 and MIT)
 URL:		https://github.com/pdfminer/pdfminer.six
 #Source0:	https://github.com/pdfminer/pdfminer.six/archive/%{version}/pdfminer-%{version}.tar.gz
-Source0:	https://pypi.io/packages/source/p/pdfminer.six/pdfminer.six-%{version}.tar.gz
+Source0:	https://pypi.io/packages/source/p/pdfminer.six/pdfminer_six-%{version}.tar.gz
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(setuptools-git-versioning)
 BuildRequires:	python%{pyver}dist(wheel)
-
 BuildArch:	noarch
 
 %description
@@ -30,12 +29,12 @@ analysis.
 %{_bindir}/dumppdf.py
 %{_bindir}/pdf2txt.py
 %{py_puresitedir}/pdfminer
-%{py_puresitedir}/pdfminer.six-*.*-info/
+%{py_puresitedir}/pdfminer_six-*.*-info/
 
 #--------------------------------------------------------------------
 
 %prep
-%autosetup -n pdfminer.six-%{version}
+%autosetup -n pdfminer_six-%{version}
 
 # TODO_ unbundle cmap data
 #rm -vf cmaprsrc/* pdfminer/cmap/*
@@ -46,4 +45,7 @@ analysis.
 
 %install
 %py_install
+
+# remove unwanted
+rm -fr %{buildroot}%{_bindir}/__pycache__
 
