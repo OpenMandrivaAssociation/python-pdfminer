@@ -3,7 +3,7 @@
 Summary:	PDF parser and analyzer
 Name:		python-pdfminer
 Version:	20250327
-Release:	1
+Release:	2
 Group:		Development/Python
 License:	MIT and Public Domain and APAFML and BSD and (ASL 2.0 and MIT)
 URL:		https://github.com/pdfminer/pdfminer.six
@@ -15,6 +15,8 @@ BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(setuptools-git-versioning)
 BuildRequires:	python%{pyver}dist(wheel)
 BuildArch:	noarch
+
+%rename python-pdfminer-six
 
 %description
 PDFMiner is a tool for extracting information from PDF documents. Unlike other
@@ -36,16 +38,10 @@ analysis.
 %prep
 %autosetup -n pdfminer_six-%{version}
 
-# TODO_ unbundle cmap data
-#rm -vf cmaprsrc/* pdfminer/cmap/*
-
 %build
-#%%make_build cmap
 %py_build
 
 %install
 %py_install
 
-# remove unwanted
 rm -fr %{buildroot}%{_bindir}/__pycache__
-
