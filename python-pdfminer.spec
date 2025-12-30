@@ -3,7 +3,7 @@
 Summary:	PDF parser and analyzer
 Name:		python-pdfminer
 Version:	20250327
-Release:	4
+Release:	5
 Group:		Development/Python
 License:	MIT and Public Domain and APAFML and BSD and (ASL 2.0 and MIT)
 URL:		https://github.com/pdfminer/pdfminer.six
