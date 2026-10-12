@@ -5,7 +5,7 @@
 Summary:	PDF parser and analyzer
 Name:		python-pdfminer
 Version:	20260107
-Release:	1
+Release:	2
 Group:		Development/Python
 License:	MIT and Public Domain and APAFML and BSD and (ASL 2.0 and MIT)
 URL:		https://github.com/pdfminer/pdfminer.six
@@ -43,6 +43,10 @@ sed -i '1i #!%{__python}' tools/dumppdf.py tools/pdf2txt.py
 
 %install -a
 rm -fr %{buildroot}%{_bindir}/__pycache__
+
+%build -p
+# The sdist is not a git checkout, so the versioning backend needs the version.
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 
 %files
 %{_bindir}/dumppdf.py
